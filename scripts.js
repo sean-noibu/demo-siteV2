@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Load the navigation bar
+    fetch('nav.html')
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector('header').innerHTML += data;
+        });
+
+    // Add to cart functionality
     const addToCartButtons = document.querySelectorAll('.btn');
     addToCartButtons.forEach(button => {
         button.addEventListener('click', addToCart);
@@ -6,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addToCart(event) {
         const button = event.target;
-        const productCard = button.closest('.product-card');
-        const productName = productCard.querySelector('h3').innerText;
+        const productCard = button.closest('.product-card, .product-details');
+        const productName = productCard.querySelector('h3, h2').innerText;
         const productPrice = productCard.querySelector('.price').innerText;
         const productImage = productCard.querySelector('img').src;
 
