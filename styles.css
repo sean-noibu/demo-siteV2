@@ -17,25 +17,45 @@ header h1 {
     font-size: 2rem;
 }
 
-nav ul {
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 0.5rem 1rem;
+    position: relative; /* Ensure the nav bar is positioned relative to allow overflow */
+}
+
+.nav-left {
+    position: relative; /* Ensure the logo is positioned relative to allow overflow */
+}
+
+.nav-left .logo {
+    height: 60px; /* Increase the height of the logo */
+    position: absolute; /* Allow the logo to overflow */
+    top: 50%; /* Center the logo vertically */
+    transform: translateY(-50%); /* Center the logo vertically */
+}
+
+.nav-right ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
+    gap: 1rem;
 }
 
-nav ul li {
-    margin: 0 1rem;
+.nav-right ul li {
+    margin: 0;
 }
 
-nav ul li a {
-    color: white;
+.nav-right ul li a {
+    color: #ddd; /* Change text color to dark for readability */
     text-decoration: none;
     font-size: 1rem;
 }
 
-nav ul li a:hover {
+.nav-right ul li a:hover {
     text-decoration: underline;
 }
 
@@ -55,6 +75,8 @@ nav ul li a:hover {
     text-align: center;
     width: 30%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color */
 }
 
 .product-card img {
