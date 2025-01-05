@@ -1,0 +1,13 @@
+## Features
+
+- Homepage with featured products
+- Add products to cart
+
+## How to Run
+
+1. Open `index.html` in your web browser.
+2. Click "Add to Cart" buttons to add products to the cart.
+
+## License
+
+This project is licensed under the MIT License.
