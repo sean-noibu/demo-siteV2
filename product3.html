@@ -8,8 +8,7 @@
     <script src="https://cdn.noibu.com/collect-core.js"></script>
 </head>
 <body data-product-id="product3">
-    <header>
-    </header>
+    <header></header>
     <main>
         <div class="product-page">
             <div class="product-image">
@@ -25,27 +24,5 @@
         </div>
     </main>
     <script src="scripts.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const getQuoteBtn = document.getElementById('get-quote');
-
-            getQuoteBtn.addEventListener('click', () => {
-                fetch('https://example.com/api/get-quote')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        alert(`Custom price quote: ${data.quote}`);
-                    })
-                    .catch(error => {
-                        console.error('There was a problem with the fetch operation:', error);
-                        alert('Failed to get custom price quote. Please try again later.');
-                    });
-            });
-        });
-    </script>
 </body>
 </html>
