@@ -19,10 +19,33 @@
                 <h2>Product 3</h2>
                 <p class="price">$39.99</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo nec orci fermentum, a tincidunt nisi facilisis.</p>
-                <button class="btn">Add to Cart</button>
+                <button class="btn" id="add-to-cart">Add to Cart</button>
+                <button class="btn" id="get-quote">Get Custom Price Quote</button>
             </div>
         </div>
     </main>
     <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const getQuoteBtn = document.getElementById('get-quote');
+
+            getQuoteBtn.addEventListener('click', () => {
+                fetch('https://example.com/api/get-quote')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        alert(`Custom price quote: ${data.quote}`);
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                        alert('Failed to get custom price quote. Please try again later.');
+                    });
+            });
+        });
+    </script>
 </body>
 </html>
