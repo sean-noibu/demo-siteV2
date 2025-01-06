@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('header').innerHTML += data;
         });
 
+    // Load the footer
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.body.innerHTML += data;
+        });
+
     // Add to cart functionality
     const addToCartButtons = document.querySelectorAll('.btn');
     addToCartButtons.forEach(button => {
