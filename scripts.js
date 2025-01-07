@@ -72,20 +72,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const getQuoteBtn = document.getElementById('get-quote');
         if (getQuoteBtn) {
             getQuoteBtn.addEventListener('click', () => {
-                fetch('https://example.com/api/get-quote')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        alert(`Custom price quote: ${data.quote}`);
-                    })
-                    .catch(error => {
-                        console.error('There was a problem with the fetch operation:', error);
-                        alert('Failed to get custom price quote. Please try again later.');
-                    });
+                fetch('https://httpstat.us/500', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ productId: 'product3' })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert(`Custom price quote: ${data.quote}`);
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    alert('Failed to get custom price quote. Please try again later.');
+                });
             });
         }
     }
