@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Verified Sticker - eCommerce Website</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="scripts.js"></script>
   </head>
   <body data-product-id="product1">
     <header></header>
@@ -26,53 +27,52 @@
         </div>
       </div>
     </main>
-    <script src="scripts.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-          const decreaseBtn = document.getElementById('decrease');
-          const increaseBtn = document.getElementById('increase');
-          const quantityInput = document.getElementById('quantity');
-          const addToCartBtn = document.getElementById('add-to-cart');
+        const decreaseBtn = document.getElementById('decrease');
+        const increaseBtn = document.getElementById('increase');
+        const quantityInput = document.getElementById('quantity');
+        const addToCartBtn = document.getElementById('add-to-cart');
 
-          decreaseBtn.addEventListener('click', () => {
-              let quantity = parseInt(quantityInput.value);
-              if (quantity > 1) {
-                  quantityInput.value = quantity - 1;
-              }
-          });
+        decreaseBtn.addEventListener('click', () => {
+          let quantity = parseInt(quantityInput.value);
+          if (quantity > 1) {
+            quantityInput.value = quantity - 1;
+          }
+        });
 
-          increaseBtn.addEventListener('click', (event) => {
-              try {
-                  let quantity = parseInt(quantityInput.value);
-                  quantityInput.value = quantity + 1;
-                  // Introduce a JavaScript error intentionally
-                  undefinedFunction();
-              } catch (error) {
-                  console.error('An error occurred:', error);
-                  event.preventDefault(); // Prevent the default action
-                  quantityInput.value = parseInt(quantityInput.value) - 1; // Revert the quantity change
-              }
-          });
+        increaseBtn.addEventListener('click', (event) => {
+          try {
+            let quantity = parseInt(quantityInput.value);
+            quantityInput.value = quantity + 1;
+            // Introduce a JavaScript error intentionally
+            undefinedFunction();
+          } catch (error) {
+            console.error('An error occurred:', error);
+            event.preventDefault(); // Prevent the default action
+            quantityInput.value = parseInt(quantityInput.value) - 1; // Revert the quantity change
+          }
+        });
 
-          addToCartBtn.addEventListener('click'R, () => {
-              const quantity = parseInt(quantityInput.value);
-              const productCard = addToCartBtn.closest('.product-details');
-              const productName = productCard.querySelector('h2').innerText;
-              const productPrice = productCard.querySelector('.price').innerText;
-              const productImage = document.querySelector('.product-image img').src;
+        addToCartBtn.addEventListener('click', () => {
+          const quantity = parseInt(quantityInput.value);
+          const productCard = addToCartBtn.closest('.product-details');
+          const productName = productCard.querySelector('h2').innerText;
+          const productPrice = productCard.querySelector('.price').innerText;
+          const productImage = document.querySelector('.product-image img').src;
 
-              const product = {
-                  name: productName,
-                  price: productPrice,
-                  image: productImage,
-                  quantity: quantity
-              };
+          const product = {
+            name: productName,
+            price: productPrice,
+            image: productImage,
+            quantity: quantity,
+          };
 
-              let cart = JSON.parse(localStorage.getItem('cart')) || [];
-              cart.push(product);
-              localStorage.setItem('cart', JSON.stringify(cart));
-              alert(`${quantity} ${productName}(s) have been added to your cart.`);
-          });
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+          cart.push(product);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          alert(`${quantity} ${productName}(s) have been added to your cart.`);
+        });
       });
     </script>
   </body>
