@@ -1,56 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-product-id="product3">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product 3 - eCommerce Website</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.noibu.com/collect-core.js"></script>
-</head>
-<body data-product-id="product3">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-product-id="product3">
     <header></header>
     <main>
-        <div class="product-page">
-            <div class="product-image">
-                <img src="assets/images/product3.jpg" alt="Product 3">
-            </div>
-            <div class="product-details">
-                <h2>Onesie</h2>
-                <p class="price">$39.99</p>
-                <p>A fun tradition for new Noibu parents!</p>
-                <button class="btn" id="add-to-cart">Add to Cart</button>
-                <button class="btn" id="get-quote">Get Custom Price Quote</button>
-            </div>
+      <div class="product-page">
+        <div class="product-image">
+          <img src="assets/images/product3.jpg" alt="Product 3" />
         </div>
+        <div class="product-details">
+          <h2>Onesie</h2>
+          <p class="price">$39.99</p>
+          <p>A fun tradition for new Noibu parents!</p>
+          <button class="btn" id="add-to-cart">Add to Cart</button>
+          <button class="btn" id="get-quote">Get Custom Price Quote</button>
+        </div>
+      </div>
     </main>
     <script src="scripts.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const getQuoteBtn = document.getElementById('get-quote');
+      document.addEventListener('DOMContentLoaded', () => {
+        const getQuoteBtn = document.getElementById('get-quote');
 
-            getQuoteBtn.addEventListener('click', () => {
-                fetch('https://httpstat.us/500', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ productId: 'product3' })
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    alert(`Custom price quote: ${data.quote}`);
-                })
-                .catch(error => {
-                    console.error('There was a problem with the fetch operation:', error);
-                    alert('Failed to get custom price quote. Please try again later.');
-                });
+        getQuoteBtn.addEventListener('click', () => {
+          fetch('https://httpstat.us/500', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ productId: 'product3' }),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then((data) => {
+              alert(`Custom price quote: ${data.quote}`);
+            })
+            .catch((error) => {
+              console.error(
+                'There was a problem with the fetch operation:',
+                error,
+              );
+              alert(
+                'Failed to get custom price quote. Please try again later.',
+              );
             });
         });
+      });
     </script>
-</body>
+  </body>
 </html>

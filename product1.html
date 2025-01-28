@@ -1,80 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-product-id="product1">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Verified Sticker - eCommerce Website</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.noibu.com/collect-core.js"></script>
-</head>
-<body data-product-id="product1">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-product-id="product1">
     <header></header>
     <main>
-        <div class="product-page">
-            <div class="product-image">
-                <img src="assets/images/product1.jpg" alt="Verified Sticker">
-            </div>
-            <div class="product-details">
-                <h2>Verified Sticker</h2>
-                <p class="price">$19.99</p>
-                <p>Slap a Verified badge on it!</p>
-                <div class="quantity-selector">
-                    <button class="quantity-btn" id="decrease">-</button>
-                    <input type="number" id="quantity" value="1" min="1">
-                    <button class="quantity-btn" id="increase">+</button>
-                </div>
-                <button class="btn" id="add-to-cart">Add to Cart</button>
-            </div>
+      <div class="product-page">
+        <div class="product-image">
+          <img src="assets/images/product1.jpg" alt="Verified Sticker" />
         </div>
+        <div class="product-details">
+          <h2>Verified Sticker</h2>
+          <p class="price">$19.99</p>
+          <p>Slap a Verified badge on it!</p>
+          <div class="quantity-selector">
+            <button class="quantity-btn" id="decrease">-</button>
+            <input type="number" id="quantity" value="1" min="1" />
+            <button class="quantity-btn" id="increase">+</button>
+          </div>
+          <button class="btn" id="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
     </main>
     <script src="scripts.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const decreaseBtn = document.getElementById('decrease');
-            const increaseBtn = document.getElementById('increase');
-            const quantityInput = document.getElementById('quantity');
-            const addToCartBtn = document.getElementById('add-to-cart');
+      document.addEventListener('DOMContentLoaded', () => {
+          const decreaseBtn = document.getElementById('decrease');
+          const increaseBtn = document.getElementById('increase');
+          const quantityInput = document.getElementById('quantity');
+          const addToCartBtn = document.getElementById('add-to-cart');
 
-            decreaseBtn.addEventListener('click', () => {
-                let quantity = parseInt(quantityInput.value);
-                if (quantity > 1) {
-                    quantityInput.value = quantity - 1;
-                }
-            });
+          decreaseBtn.addEventListener('click', () => {
+              let quantity = parseInt(quantityInput.value);
+              if (quantity > 1) {
+                  quantityInput.value = quantity - 1;
+              }
+          });
 
-            increaseBtn.addEventListener('click', (event) => {
-                try {
-                    let quantity = parseInt(quantityInput.value);
-                    quantityInput.value = quantity + 1;
-                    // Introduce a JavaScript error intentionally
-                    undefinedFunction();
-                } catch (error) {
-                    console.error('An error occurred:', error);
-                    event.preventDefault(); // Prevent the default action
-                    quantityInput.value = parseInt(quantityInput.value) - 1; // Revert the quantity change
-                }
-            });
+          increaseBtn.addEventListener('click', (event) => {
+              try {
+                  let quantity = parseInt(quantityInput.value);
+                  quantityInput.value = quantity + 1;
+                  // Introduce a JavaScript error intentionally
+                  undefinedFunction();
+              } catch (error) {
+                  console.error('An error occurred:', error);
+                  event.preventDefault(); // Prevent the default action
+                  quantityInput.value = parseInt(quantityInput.value) - 1; // Revert the quantity change
+              }
+          });
 
-            addToCartBtn.addEventListener('click', () => {
-                const quantity = parseInt(quantityInput.value);
-                const productCard = addToCartBtn.closest('.product-details');
-                const productName = productCard.querySelector('h2').innerText;
-                const productPrice = productCard.querySelector('.price').innerText;
-                const productImage = document.querySelector('.product-image img').src;
+          addToCartBtn.addEventListener('click'R, () => {
+              const quantity = parseInt(quantityInput.value);
+              const productCard = addToCartBtn.closest('.product-details');
+              const productName = productCard.querySelector('h2').innerText;
+              const productPrice = productCard.querySelector('.price').innerText;
+              const productImage = document.querySelector('.product-image img').src;
 
-                const product = {
-                    name: productName,
-                    price: productPrice,
-                    image: productImage,
-                    quantity: quantity
-                };
+              const product = {
+                  name: productName,
+                  price: productPrice,
+                  image: productImage,
+                  quantity: quantity
+              };
 
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                cart.push(product);
-                localStorage.setItem('cart', JSON.stringify(cart));
-                alert(`${quantity} ${productName}(s) have been added to your cart.`);
-            });
-        });
+              let cart = JSON.parse(localStorage.getItem('cart')) || [];
+              cart.push(product);
+              localStorage.setItem('cart', JSON.stringify(cart));
+              alert(`${quantity} ${productName}(s) have been added to your cart.`);
+          });
+      });
     </script>
-</body>
+  </body>
 </html>

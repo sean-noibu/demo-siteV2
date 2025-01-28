@@ -1,0 +1,26 @@
+{
+  "name": "demo-sitev2",
+  "version": "1.0.0",
+  "description": "Homepage with featured products",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier -w ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sean-noibu/demo-siteV2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sean-noibu/demo-siteV2/issues"
+  },
+  "homepage": "https://github.com/sean-noibu/demo-siteV2#readme",
+  "devDependencies": {
+    "prettier": "^3.4.2"
+  },
+  "prettier": {
+    "singleQuote": true
+  }
+}
