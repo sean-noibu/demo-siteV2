@@ -44,6 +44,26 @@
             </div>
         </section>
     </main>
-    <script src="scripts.js"></script>
+    
+     <script>
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const scriptSrc = "scripts.js";
+
+            if (params.has('delayBodyScript')) {
+                // Add an event listener for the custom 'loadBodyScript' event
+                document.addEventListener('loadBodyScript', function() {
+                    const script = document.createElement('script');
+                    script.src = scriptSrc;
+                    document.body.appendChild(script);
+                });
+            } else {
+                // Immediately load the script if 'delayBodyScript' is not present
+                const script = document.createElement('script');
+                script.src = scriptSrc;
+                document.body.appendChild(script);
+            }
+        })();
+    </script>
 </body>
 </html>
