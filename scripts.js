@@ -1,16 +1,11 @@
 const params = new URLSearchParams(window.location.search);
 
 /**
- * Attach the Noibu collect script if 'noNjs' is not present
+ * Attach the Noibu collect script
  */
-if (params.has('noNjs')) {
-  console.log('noNjs detected, skipping collect script');
-} else {
-  console.log('noNjs param not detected, attaching collect script');
-  const script = document.createElement('script');
-  script.src = 'https://cdn.noibu.com/collect-core.js';
-  document.head.appendChild(script);
-}
+const script = document.createElement('script');
+script.src = 'https://cdn.noibu.com/collect-core.js';
+document.head.appendChild(script);
 
 // Handle the delayed or immediate script loading
 if (params.has('delayBodyScript')) {
@@ -67,7 +62,7 @@ function listener() {
  */
 function attachEventListeners() {
   // Add to cart functionality
-  document.querySelectorAll('.btn#add-to-cart').forEach((button) => {
+  document.querySelectorAll('.btn[name=add-to-cart]').forEach((button) => {
     button.addEventListener('click', addToCart);
   });
 
