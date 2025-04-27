@@ -3,7 +3,7 @@ const params = new URLSearchParams(window.location.search);
 /**
  * GTM
  */
-const gtm = document.createElement('script');
+const gtm = document.createElement('gtm');
 script.src = (function (w, d, s, l, i) {
   w[l] = w[l] || [];
   w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
