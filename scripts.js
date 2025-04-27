@@ -14,7 +14,7 @@ script.src = (function (w, d, s, l, i) {
   j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
   f.parentNode.insertBefore(j, f);
 })(window, document, 'script', 'dataLayer', 'GTM-WS7T3NM2');
-document.head.appendChild(script);
+document.head.appendChild(gtm);
 
 /**
  * Attach the Noibu collect script
