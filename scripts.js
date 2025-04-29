@@ -144,7 +144,7 @@ function init() {
 
     async function checkSDKExistenceAndRequestHelpCode() {
       // Check if the current page is the contact-us page
-      if (window.location.pathname.includes('contact-us.html')) {
+      if (window.location.pathname.includes('contact-us')) {
         try {
           // Wait for the Noibu SDK to load if it's not already available
           if (!window.NOIBUJS) {
