@@ -203,3 +203,41 @@ function attachHelpCodeListener() {
     console.warn("Help code button or result label not found on this page.");
   }
 }
+
+// Randomly assign a session storage variable of A or B
+function assignRandomVariantOncePerSession() {
+  const variantKey = 'userVariant';
+  if (!sessionStorage.getItem(variantKey)) {
+    const variant = Math.random() < 0.5 ? 'A' : 'B'; // 50% chance for A or B
+    sessionStorage.setItem(variantKey, variant);
+    console.log(`Assigned variant for this session: ${variant}`);
+  } else {
+    console.log(`Existing variant for this session: ${sessionStorage.getItem(variantKey)}`);
+  }
+}
+
+// Call the function to assign the variant
+assignRandomVariantOncePerSession();
+
+async function checkSDKExistenceAndAddCustomAttribute() {
+  // Ensure the Noibu SDK is loaded
+  if (!window.NOIBUJS) {
+    await new Promise((resolve) => {
+      window.addEventListener('noibuSDKReady', resolve);
+    });
+  }
+
+  // Retrieve the userVariant from sessionStorage
+  const userVariant = sessionStorage.getItem('userVariant');
+
+  // Add the userVariant as a custom attribute if it exists
+  if (userVariant) {
+    window.NOIBUJS.addCustomAttribute('userVariant', userVariant);
+    console.log(`Custom attribute added: userVariant = ${userVariant}`);
+  } else {
+    console.warn('userVariant is not set in sessionStorage.');
+  }
+}
+
+// Call the function to ensure the custom attribute is added
+checkSDKExistenceAndAddCustomAttribute();
