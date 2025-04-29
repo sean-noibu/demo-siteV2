@@ -139,5 +139,28 @@ function attachEventListeners() {
  * Initializes the main listener once DOM content is loaded.
  */
 function init() {
-  document.addEventListener('DOMContentLoaded', listener);
+  document.addEventListener('DOMContentLoaded', () => {
+    listener();
+
+    async function checkSDKExistenceAndRequestHelpCode() {
+    // Trigger the help code logic if on the contact-us page
+    if (window.location.pathname.includes('contact-us.html')) {
+      if (!window.NOIBUJS) {
+        await new Promise(resolve => {
+          window.addEventListener('noibuSDKReady', resolve);
+        }
+      );
+      }
+      NOIBUJS.requestHelpCode(false)
+        .then((helpcode) => {
+          console.log(helpcode);
+        })
+        .catch((error) => {
+          console.error('Error:', error); // In case there's an error in the promise.
+        });
+      }
+    }
+
+    checkSDKExistenceAndRequestHelpCode();
+  });
 }
