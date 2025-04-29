@@ -1,30 +1,14 @@
 <head>
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    if (window.NOIBUJS) {
-      attachHelpCodeListener();
-    } else {
-      window.addEventListener("noibuSDKReady", attachHelpCodeListener);
-    }
-  });
-
-  function attachHelpCodeListener() {
-    let button = document.getElementById("request-help-code");
-    let label = document.getElementById("help-code-result");
-    if (button && label) {
-      button.addEventListener("click", async () => {
-        try {
-          let helpCode = await window.NOIBUJS.requestHelpCode(false);
-          label.innerText = helpCode;
-        } catch (error) {
-          console.error("Error fetching help code:", error);
-        }
-      });
-    } else {
-      console.error("Button or label element not found in the DOM.");
-    }
-  }
-  </script>
+    window.addEventListener("noibuSDKReady", () => {
+        let button = document.getElementById("request-help-code");
+        let label = document.getElementById("help-code-result");
+        button.addEventListener("click", async () => {
+           let helpCode = await window.NOIBUJS.requestHelpCode(false); // do not present an alert with a help code
+           label.innerText = helpCode;
+        });
+    });
+    </script>
   </head>
 <footer>
   <p>&copy; 2025 Noibu. All rights reserved.</p>

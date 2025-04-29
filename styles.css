@@ -440,31 +440,3 @@ footer nav ul li a:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Help Code Button Styles */
-#request-help-code {
-  background-color: #007bff; /* Primary button color */
-  color: #fff; /* White text */
-  border: none; /* Remove default border */
-  padding: 0.8rem 1.5rem; /* Add padding for a button-like appearance */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 1rem; /* Consistent font size */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
-}
-
-#request-help-code:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: scale(1.05); /* Slightly enlarge the button on hover */
-}
-
-#request-help-code:active {
-  background-color: #003f7f; /* Even darker blue when clicked */
-  transform: scale(0.95); /* Slightly shrink the button when clicked */
-}
-
-/* Help Code Result Styling */
-#help-code-result {
-  margin-top: 0.5rem; /* Add spacing above the result */
-  font-size: 1rem; /* Match the font size with the rest of the site */
-  color: #333; /* Neutral text color */
-}
