@@ -95,12 +95,14 @@ function attachEventListeners() {
       }
     });
 
+    window.addEventListener("noibuSDKReady", () => {
       let button = document.getElementById("request-help-code");
       let label = document.getElementById("help-code-result");
       button.addEventListener("click", async () => {
           let helpCode = await window.NOIBUJS.requestHelpCode(false); // do not present an alert with a help code
           label.innerText = helpCode;
       });
+  });
 
     increaseBtn.addEventListener('click', (event) => {
       try {
