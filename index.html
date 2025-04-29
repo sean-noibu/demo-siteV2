@@ -6,18 +6,7 @@
         <!--(⌐■_■)Some legend tested out referrer policies here!╰(*°▽°*)╯-->
         <title>eCommerce Website</title>
         <link rel="stylesheet" href="styles.css" />
-
         <script src="scripts.js"></script>
-        <script>
-            window.addEventListener("noibuSDKReady", () => {
-                let button = document.getElementById("request-help-code");
-                let label = document.getElementById("help-code-result");
-                button.addEventListener("click", async () => {
-                   let helpCode = await window.NOIBUJS.requestHelpCode(false); // do not present an alert with a help code
-                   label.innerText = helpCode;
-                });
-            });
-            </script>
     </head>
     <body>
         <!-- Google Tag Manager (noscript) -->

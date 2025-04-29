@@ -95,8 +95,6 @@ function attachEventListeners() {
       }
     });
 
-
-
     increaseBtn.addEventListener('click', (event) => {
       try {
         let quantity = parseInt(quantityInput.value);
@@ -162,14 +160,6 @@ function init() {
             });
           }
 
-            let button = document.getElementById("request-help-code");
-            let label = document.getElementById("help-code-result");
-            button.addEventListener("click", async () => {
-                let helpCode = await window.NOIBUJS.requestHelpCode(false); // do not present an alert with a help code
-                label.innerText = helpCode;
-            });
-
-
           // Call the requestHelpCode function
           if (window.NOIBUJS) {
             const helpcode = await NOIBUJS.requestHelpCode(false);
@@ -185,4 +175,31 @@ function init() {
 
     checkSDKExistenceAndRequestHelpCode();
   });
+}
+
+// Add a listener for the Noibu SDK and attach the help code functionality
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.NOIBUJS) {
+    attachHelpCodeListener();
+  } else {
+    window.addEventListener("noibuSDKReady", attachHelpCodeListener);
+  }
+});
+
+function attachHelpCodeListener() {
+  const button = document.getElementById("request-help-code");
+  const label = document.getElementById("help-code-result");
+
+  if (button && label) {
+    button.addEventListener("click", async () => {
+      try {
+        const helpCode = await window.NOIBUJS.requestHelpCode(false);
+        label.innerText = helpCode;
+      } catch (error) {
+        console.error("Error fetching help code:", error);
+      }
+    });
+  } else {
+    console.warn("Help code button or result label not found on this page.");
+  }
 }
