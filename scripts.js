@@ -145,34 +145,15 @@ function init() {
     async function checkSDKExistenceAndRequestHelpCode() {
       // Check if the current page is the contact-us page
       if (window.location.pathname.includes('contact-us')) {
-        try {
-          // Wait for the Noibu SDK to load if it's not already available
           if (!window.NOIBUJS) {
-            await new Promise((resolve, reject) => {
-              const timeout = setTimeout(() => {
-                reject(new Error('Noibu SDK did not load within the expected time.'));
-              }, 10000); // Timeout after 10 seconds
-
-              window.addEventListener('noibuSDKReady', () => {
-                clearTimeout(timeout);
-                resolve();
-              });
+            await new Promise(resolve => {
+              window.addEventListener('noibuSDKReady', resolve);
             });
           }
-
-          // Call the requestHelpCode function
-          if (window.NOIBUJS) {
-            const helpcode = await NOIBUJS.requestHelpCode(false);
-            console.log(helpcode);
-          } else {
-            console.error('NOIBUJS is not available after waiting for the SDK.');
-          }
-        } catch (error) {
-          console.error('Error while requesting help code:', error);
-        }
+          window.NOIBUJS.requestHelpCode(false);
+          console.log(helpCode);
       }
     }
-
     checkSDKExistenceAndRequestHelpCode();
   });
 }
