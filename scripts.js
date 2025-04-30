@@ -141,25 +141,29 @@ function attachEventListeners() {
 function init() {
   document.addEventListener('DOMContentLoaded', () => {
     listener();
-
-    async function checkSDKExistenceAndRequestHelpCode() {
-      // Check if the current page is the contact-us page
-      if (window.location.pathname.includes('contact-us')) {
-          if (!window.NOIBUJS) {
-            await new Promise(resolve => {
-              window.addEventListener('noibuSDKReady', resolve);
-            });
-          }
-          let helpcode = window.NOIBUJS.requestHelpCode(false);
-          console.log(helpcode);
-      }
-    }
-    checkSDKExistenceAndRequestHelpCode();
   });
 }
 
+
+
+async function checkSDKExistenceAndRequestHelpCode() {
+  // Check if the current page is the contact-us page
+  if (window.location.pathname.includes('contact-us')) {
+      if (!window.NOIBUJS) {
+        await new Promise(resolve => {
+          window.addEventListener('noibuSDKReady', resolve);
+        });
+      }
+      let helpcode = window.NOIBUJS.requestHelpCode(false);
+      console.log(helpcode)
+  }
+}
+
+checkSDKExistenceAndRequestHelpCode();
+
+
 function addHelpCodeButton() {
-  window.addEventListener("noibuSDKReady", async () => {
+  window.addEventListener("noibuSDKReady", () => {
     let button = document.getElementById("request-help-code");
     let label = document.getElementById("help-code-result");
     button.addEventListener("click", async () => {
@@ -168,8 +172,31 @@ function addHelpCodeButton() {
     });
 });
 }
-
 addHelpCodeButton();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Randomly assign a session storage variable of A or B
 function assignRandomVariantOncePerSession() {
