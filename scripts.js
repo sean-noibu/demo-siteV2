@@ -177,31 +177,15 @@ function init() {
   });
 }
 
-// Add a listener for the Noibu SDK and attach the help code functionality
-document.addEventListener("DOMContentLoaded", () => {
-  if (window.NOIBUJS) {
-    attachHelpCodeListener();
-  } else {
-    window.addEventListener("noibuSDKReady", attachHelpCodeListener);
-  }
-});
-
-function attachHelpCodeListener() {
-  const button = document.getElementById("request-help-code");
-  const label = document.getElementById("help-code-result");
-
-  if (button && label) {
+function addHelpCodeListener() {
+  window.addEventListener("noibuSDKReady", () => {
+    let button = document.getElementById("request-help-code");
+    let label = document.getElementById("help-code-result");
     button.addEventListener("click", async () => {
-      try {
-        const helpCode = await window.NOIBUJS.requestHelpCode(false);
+        let helpCode = await window.NOIBUJS.requestHelpCode(false); // do not present an alert with a help code
         label.innerText = helpCode;
-      } catch (error) {
-        console.error("Error fetching help code:", error);
-      }
     });
-  } else {
-    console.warn("Help code button or result label not found on this page.");
-  }
+});
 }
 
 // Randomly assign a session storage variable of A or B
@@ -215,9 +199,6 @@ function assignRandomVariantOncePerSession() {
     console.log(`Existing variant for this session: ${sessionStorage.getItem(variantKey)}`);
   }
 }
-
-// Call the function to assign the variant
-assignRandomVariantOncePerSession();
 
 async function checkSDKExistenceAndAddCustomAttribute() {
   // Ensure the Noibu SDK is loaded
