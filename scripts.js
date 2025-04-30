@@ -177,8 +177,8 @@ function init() {
   });
 }
 
-function addHelpCodeListener() {
-  window.addEventListener("noibuSDKReady", () => {
+function addHelpCodeButton() {
+  window.addEventListener("noibuSDKReady", async () => {
     let button = document.getElementById("request-help-code");
     let label = document.getElementById("help-code-result");
     button.addEventListener("click", async () => {
