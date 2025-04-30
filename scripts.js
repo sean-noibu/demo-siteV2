@@ -193,7 +193,7 @@ async function checkSDKExistanceAndAddCustomAttribute() {
   const userVariant = sessionStorage.getItem('userVariant');
 
   window.NOIBUJS.addCustomAttribute('userVariant', userVariant);
-  console.log('Successfully logged custome attribute {}', userVariant)
+  console.log('Successfully logged custome attribute', userVariant)
 }
 
 checkSDKExistanceAndAddCustomAttribute();
