@@ -183,25 +183,17 @@ function assignRandomVariantOncePerSession() {
   }
 }
 
-async function checkSDKExistenceAndAddCustomAttribute() {
-  // Ensure the Noibu SDK is loaded
+
+async function checkSDKExistanceAndAddCustomAttribute() {
   if (!window.NOIBUJS) {
-    await new Promise((resolve) => {
+    await new Promise(resolve => {
       window.addEventListener('noibuSDKReady', resolve);
     });
   }
-
-  // Retrieve the userVariant from sessionStorage
   const userVariant = sessionStorage.getItem('userVariant');
 
-  // Add the userVariant as a custom attribute if it exists
-  if (userVariant) {
-    window.NOIBUJS.addCustomAttribute('userVariant', userVariant);
-    console.log(`Custom attribute added: userVariant = ${userVariant}`);
-  } else {
-    console.warn('userVariant is not set in sessionStorage.');
-  }
+  window.NOIBUJS.addCustomAttribute('userVariant', userVariant);
 }
 
-// Call the function to ensure the custom attribute is added
-checkSDKExistenceAndAddCustomAttribute();
+checkSDKExistanceAndAddCustomAttribute();
+
