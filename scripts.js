@@ -188,6 +188,8 @@ function addHelpCodeButton() {
 });
 }
 
+addHelpCodeButton();
+
 // Randomly assign a session storage variable of A or B
 function assignRandomVariantOncePerSession() {
   const variantKey = 'userVariant';
