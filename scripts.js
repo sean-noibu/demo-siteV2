@@ -219,10 +219,10 @@ async function checkSDKExistanceAndAddCustomAttribute() {
     });
   }
   const userVariant = sessionStorage.getItem('userVariant');
-
   window.NOIBUJS.addCustomAttribute('userVariant', userVariant);
-  console.log('Successfully logged custom attribute', userVariant)
+  console.log('Successfully added custom attribute', userVariant)
 }
+checkSDKExistanceAndAddCustomAttribute();
 
 checkSDKExistanceAndAddCustomAttribute();
 
