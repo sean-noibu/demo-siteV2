@@ -150,8 +150,8 @@ function init() {
               window.addEventListener('noibuSDKReady', resolve);
             });
           }
-          window.NOIBUJS.requestHelpCode(false);
-          console.log(helpCode);
+          let helpcode = window.NOIBUJS.requestHelpCode(false);
+          console.log(helpcode);
       }
     }
     checkSDKExistenceAndRequestHelpCode();
