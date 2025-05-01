@@ -154,9 +154,9 @@ async function checkSDKExistenceAndRequestHelpCode() {
           window.addEventListener('noibuSDKReady', resolve);
         });
       }
-      let helpcode = window.NOIBUJS.requestHelpCode(false);
-      console.log(helpcode)
-  }
+      const helpCode = window.NOIBUJS.requestHelpCode('false');
+      console.log(helpCode);
+    }
 }
 
 checkSDKExistenceAndRequestHelpCode();
