@@ -211,18 +211,15 @@ function assignRandomVariantOncePerSession() {
 }
 assignRandomVariantOncePerSession();
 
-
 async function checkSDKExistanceAndAddCustomAttribute() {
   if (!window.NOIBUJS) {
     await new Promise(resolve => {
       window.addEventListener('noibuSDKReady', resolve);
     });
   }
-  const userVariant = sessionStorage.getItem('userVariant');
+  const userVariant = sessionStorage.getItem('userVariant')
   window.NOIBUJS.addCustomAttribute('userVariant', userVariant);
-  console.log('Successfully added custom attribute', userVariant)
 }
 checkSDKExistanceAndAddCustomAttribute();
 
-checkSDKExistanceAndAddCustomAttribute();
 
