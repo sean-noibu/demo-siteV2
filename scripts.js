@@ -226,7 +226,7 @@ checkSDKExistanceAndAddCustomAttribute();
 // Randomly assign a session storage variable ID
 function assignRandomIdOncePerSession() {
   const userId = 'ID';
-  if (!sessionStorage.getItem(id)) {
+  if (!sessionStorage.getItem(userId)) {
     const id = Date.now();
     sessionStorage.setItem(userId, id);
     console.log(`Assigned id for this session: ${id}`);
