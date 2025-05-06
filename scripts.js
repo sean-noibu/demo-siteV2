@@ -223,6 +223,8 @@ async function checkSDKExistanceAndAddCustomAttribute() {
 checkSDKExistanceAndAddCustomAttribute();
 
 
+
+
 // Randomly assign a session storage variable ID
 function assignRandomIdOncePerSession() {
   const userId = 'ID';
@@ -235,3 +237,15 @@ function assignRandomIdOncePerSession() {
   }
 }
 assignRandomIdOncePerSession();
+
+
+async function checkSDKExistanceAndAddCustomAttribute() {
+  if (!window.NOIBUJS) {
+    await new Promise(resolve => {
+      window.addEventListener('noibuSDKReady', resolve);
+    });
+  }
+  const userId = sessionStorage.getItem(userId);
+  window.NOIBUJS.addCustomAttribute('userId', userId);
+}
+checkSDKExistanceAndAddCustomAttribute();
